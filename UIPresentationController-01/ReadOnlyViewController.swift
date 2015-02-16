@@ -10,6 +10,8 @@ import UIKit
 
 class ReadOnlyViewController: UIViewController {
 
+    let editorTransitioningDelegate =  EditorTransitioningDelegate()
+    
     @IBAction func EditButtonPressed() {
         let editorVC = self.storyboard?.instantiateViewControllerWithIdentifier("Editor") as UIViewController
         prepareEditorVC(editorVC)
@@ -17,12 +19,17 @@ class ReadOnlyViewController: UIViewController {
     }
     
     private func prepareEditorVC(editorVC: UIViewController) {
-        //        overlayVC.transitioningDelegate = overlayTransitioningDelegate
-        editorVC.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
+
+//        editorVC.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
+        editorVC.modalPresentationStyle = UIModalPresentationStyle.Custom
+        
+        editorVC.transitioningDelegate = editorTransitioningDelegate
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 
         // Do any additional setup after loading the view.
     }

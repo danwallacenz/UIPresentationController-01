@@ -14,6 +14,8 @@
 		CB4865D61A91611C00470682 /* UIPresentationController_01Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4865D51A91611C00470682 /* UIPresentationController_01Tests.swift */; };
 		CB4865E01A91623700470682 /* ReadOnlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4865DF1A91623700470682 /* ReadOnlyViewController.swift */; };
 		CB4865E21A91681E00470682 /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4865E11A91681E00470682 /* EditorViewController.swift */; };
+		CB4865E71A91992A00470682 /* EditorTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4865E61A91992A00470682 /* EditorTransitioningDelegate.swift */; };
+		CB4865EA1A9199F000470682 /* EditorPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4865E91A9199F000470682 /* EditorPresentationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,8 @@
 		CB4865D51A91611C00470682 /* UIPresentationController_01Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPresentationController_01Tests.swift; sourceTree = "<group>"; };
 		CB4865DF1A91623700470682 /* ReadOnlyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadOnlyViewController.swift; sourceTree = "<group>"; };
 		CB4865E11A91681E00470682 /* EditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
+		CB4865E61A91992A00470682 /* EditorTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorTransitioningDelegate.swift; sourceTree = "<group>"; };
+		CB4865E91A9199F000470682 /* EditorPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorPresentationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,7 @@
 		CB4865BC1A91611C00470682 /* UIPresentationController-01 */ = {
 			isa = PBXGroup;
 			children = (
+				CB4865E81A91993D00470682 /* Transition */,
 				CB4865BF1A91611C00470682 /* AppDelegate.swift */,
 				CB4865C31A91611C00470682 /* Main.storyboard */,
 				CB4865E31A91683400470682 /* VCs */,
@@ -121,6 +126,15 @@
 				CB4865DF1A91623700470682 /* ReadOnlyViewController.swift */,
 			);
 			name = VCs;
+			sourceTree = "<group>";
+		};
+		CB4865E81A91993D00470682 /* Transition */ = {
+			isa = PBXGroup;
+			children = (
+				CB4865E61A91992A00470682 /* EditorTransitioningDelegate.swift */,
+				CB4865E91A9199F000470682 /* EditorPresentationController.swift */,
+			);
+			name = Transition;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,8 +238,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB4865E01A91623700470682 /* ReadOnlyViewController.swift in Sources */,
+				CB4865E71A91992A00470682 /* EditorTransitioningDelegate.swift in Sources */,
 				CB4865E21A91681E00470682 /* EditorViewController.swift in Sources */,
 				CB4865C01A91611C00470682 /* AppDelegate.swift in Sources */,
+				CB4865EA1A9199F000470682 /* EditorPresentationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

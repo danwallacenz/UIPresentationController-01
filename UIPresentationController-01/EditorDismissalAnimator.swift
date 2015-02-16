@@ -42,7 +42,7 @@ class EditorDismissalAnimator: NSObject, UIViewControllerAnimatedTransitioning {
             UIView.animateWithDuration(self.transitionDuration(transitionContext),
                 delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 5.0, options: nil,
                 animations: {
-                    presentedView.center = CGPointMake(presentedView.bounds.size.width*2, centre.y)
+                    presentedView.center = CGPointMake(presentedView.bounds.size.width*1.5, centre.y)
                 }, completion: {
                     _ in
                     presentedView.removeFromSuperview()

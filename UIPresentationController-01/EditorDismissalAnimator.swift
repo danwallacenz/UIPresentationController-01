@@ -1,67 +1,65 @@
 //
-//  EditorPresentationAnimator.swift
+//  EditorDismissalAnimator.swift
 //  UIPresentationController-01
 //
-//  Created by Daniel Wallace on 16/02/15.
+//  Created by Daniel Wallace on 17/02/15.
 //  Copyright (c) 2015 nz.co.danielw. All rights reserved.
 //
 
 import UIKit
 
-class EditorPresentationAnimator: NSObject, UIViewControllerAnimatedTransitioning {
+class EditorDismissalAnimator: NSObject, UIViewControllerAnimatedTransitioning {
    
     func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
-        println("EditorPresentationAnimator - transitionDuration(transitionContext:\(transitionContext))")
+        println("EditorDismissalAnimator - transitionDuration(transitionContext:\(transitionContext))")
         return 0.5
     }
     
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
         
         // -------------------------------------------------------------------------------------------------
-        println("/nEditorPresentationAnimator - animateTransition(transitionContext:\(transitionContext))")
+        println("/EditorDismissalAnimator - animateTransition(transitionContext:\(transitionContext))")
         
         let fromView = transitionContext.viewForKey(UITransitionContextFromViewKey)
         let fromViewController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)
         
-        println("EditorPresentationAnimator - animateTransition fromView = \(fromView)")
-        println("EditorPresentationAnimator - animateTransition fromViewController = \(fromViewController)")
+        println("EditorDismissalAnimator - animateTransition fromView = \(fromView)")
+        println("EditorDismissalAnimator - animateTransition fromViewController = \(fromViewController)")
         
         let toView = transitionContext.viewForKey(UITransitionContextToViewKey)
         let toViewController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)
-        println("EditorPresentationAnimator - animateTransition toView = \(toView)")
-        println("EditorPresentationAnimator - animateTransition toViewController = \(toViewController)")
+        println("EditorDismissalAnimator - animateTransition toView = \(toView)")
+        println("EditorDismissalAnimator - animateTransition toViewController = \(toViewController)")
         
         let containerView = transitionContext.containerView()
-        println("EditorPresentationAnimator - animateTransition containerView = \(containerView)")
+        println("EditorDismissalAnimator - animateTransition containerView = \(containerView)")
         // -------------------------------------------------------------------------------------------------
         
-        if let presentedView = transitionContext.viewForKey(UITransitionContextToViewKey) {
+        if let presentedView = transitionContext.viewForKey(UITransitionContextFromViewKey) {
             
             let centre = presentedView.center
-            presentedView.center = CGPointMake(presentedView.bounds.size.width, centre.y)
-            
-            transitionContext.containerView().addSubview(presentedView)
             
             UIView.animateWithDuration(self.transitionDuration(transitionContext),
-                delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 10.0, options: nil,
+                delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 5.0, options: nil,
                 animations: {
-                    presentedView.center = centre
+                    presentedView.center = CGPointMake(presentedView.bounds.size.width*2, centre.y)
                 }, completion: {
                     _ in
+                    presentedView.removeFromSuperview()
                     transitionContext.completeTransition(true)
             })
         }
     }
     
     override func animationDidStart(anim: CAAnimation!) {
-        println("EditorPresentationAnimator -animationDidStart(anim: \(anim))")
+        println("EditorDismissalAnimator -animationDidStart(anim: \(anim))")
     }
     
     override func animationDidStop(anim: CAAnimation!, finished flag: Bool) {
-        println("EditorPresentationAnimator - animationDidStop(anim:\(anim), finished:\(flag))")
+        println("EditorDismissalAnimator - animationDidStop(anim:\(anim), finished:\(flag))")
     }
     
     func animationEnded(transitionCompleted: Bool) {
-        println("EditorPresentationAnimator - animationEnded(transitionCompleted:\(transitionCompleted))")
+        println("EditorDismissalAnimator - animationEnded(transitionCompleted:\(transitionCompleted))")
     }
 }

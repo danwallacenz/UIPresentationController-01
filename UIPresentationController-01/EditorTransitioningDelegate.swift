@@ -25,4 +25,16 @@ class EditorTransitioningDelegate: NSObject, UIViewControllerTransitioningDelega
     func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return EditorPresentationAnimator()
     }
+    
+    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return EditorDismissalAnimator()
+    }
+    
+    override func animationDidStart(anim: CAAnimation!) {
+        println("EditorTransitioningDelegate - animationDidStart(anim: \(anim))")
+    }
+    
+    override func animationDidStop(anim: CAAnimation!, finished flag: Bool) {
+        println("EditorTransitioningDelegate - animationDidStop(anim: \(anim), finished:\(flag))")
+    }
 }

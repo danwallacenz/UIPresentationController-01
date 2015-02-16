@@ -16,6 +16,7 @@
 		CB4865E21A91681E00470682 /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4865E11A91681E00470682 /* EditorViewController.swift */; };
 		CB4865E71A91992A00470682 /* EditorTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4865E61A91992A00470682 /* EditorTransitioningDelegate.swift */; };
 		CB4865EA1A9199F000470682 /* EditorPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4865E91A9199F000470682 /* EditorPresentationController.swift */; };
+		CB4865EC1A91F29300470682 /* EditorPresentationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4865EB1A91F29300470682 /* EditorPresentationAnimator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		CB4865E11A91681E00470682 /* EditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
 		CB4865E61A91992A00470682 /* EditorTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorTransitioningDelegate.swift; sourceTree = "<group>"; };
 		CB4865E91A9199F000470682 /* EditorPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorPresentationController.swift; sourceTree = "<group>"; };
+		CB4865EB1A91F29300470682 /* EditorPresentationAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorPresentationAnimator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 			children = (
 				CB4865E61A91992A00470682 /* EditorTransitioningDelegate.swift */,
 				CB4865E91A9199F000470682 /* EditorPresentationController.swift */,
+				CB4865EB1A91F29300470682 /* EditorPresentationAnimator.swift */,
 			);
 			name = Transition;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 			files = (
 				CB4865E01A91623700470682 /* ReadOnlyViewController.swift in Sources */,
 				CB4865E71A91992A00470682 /* EditorTransitioningDelegate.swift in Sources */,
+				CB4865EC1A91F29300470682 /* EditorPresentationAnimator.swift in Sources */,
 				CB4865E21A91681E00470682 /* EditorViewController.swift in Sources */,
 				CB4865C01A91611C00470682 /* AppDelegate.swift in Sources */,
 				CB4865EA1A9199F000470682 /* EditorPresentationController.swift in Sources */,

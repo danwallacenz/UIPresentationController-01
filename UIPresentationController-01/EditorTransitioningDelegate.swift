@@ -20,4 +20,9 @@ class EditorTransitioningDelegate: NSObject, UIViewControllerTransitioningDelega
             return EditorPresentationController(presentedViewController: presented,
                 presentingViewController: presenting)
     }
+    
+    // MARK: Getting the Transition Animator Objects
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return EditorPresentationAnimator()
+    }
 }

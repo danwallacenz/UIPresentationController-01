@@ -10,6 +10,13 @@ import UIKit
 
 class EditorViewController: UIViewController {
 
+    @IBAction func dismissButtonPressed() {
+        presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -11,8 +11,14 @@ import UIKit
 class ReadOnlyViewController: UIViewController {
 
     @IBAction func EditButtonPressed() {
-        
-        
+        let editorVC = self.storyboard?.instantiateViewControllerWithIdentifier("Editor") as UIViewController
+        prepareEditorVC(editorVC)
+        self.presentViewController(editorVC, animated: true, completion: nil)
+    }
+    
+    private func prepareEditorVC(editorVC: UIViewController) {
+        //        overlayVC.transitioningDelegate = overlayTransitioningDelegate
+        editorVC.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
     }
     
     override func viewDidLoad() {
@@ -25,6 +31,8 @@ class ReadOnlyViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+
     
 
     /*

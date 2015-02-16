@@ -57,12 +57,12 @@
         <!--Editor View Controller-->
         <scene sceneID="qee-yL-8gi">
             <objects>
-                <viewController id="xD8-am-sLL" customClass="EditorViewController" customModule="UIPresentationController_01" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Editor" id="xD8-am-sLL" customClass="EditorViewController" customModule="UIPresentationController_01" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FL8-os-ROr"/>
                         <viewControllerLayoutGuide type="bottom" id="4BU-bW-cSJ"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="IfS-ZD-6AZ">
+                    <view key="view" opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" id="IfS-ZD-6AZ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -77,6 +77,9 @@
                                 <state key="normal" title="DIsmiss">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="dismissButtonPressed" destination="xD8-am-sLL" eventType="touchUpInside" id="7UK-lT-42a"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.84354893450000001" blue="0.55014626430000002" alpha="1" colorSpace="calibratedRGB"/>

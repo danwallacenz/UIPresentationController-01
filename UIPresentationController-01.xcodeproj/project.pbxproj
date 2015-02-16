@@ -18,6 +18,8 @@
 		CB4865EA1A9199F000470682 /* EditorPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4865E91A9199F000470682 /* EditorPresentationController.swift */; };
 		CB4865EC1A91F29300470682 /* EditorPresentationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4865EB1A91F29300470682 /* EditorPresentationAnimator.swift */; };
 		CB4865EE1A9216D500470682 /* EditorDismissalAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4865ED1A9216D500470682 /* EditorDismissalAnimator.swift */; };
+		CB7A4EAD1A92959D0052151F /* EditorPresentationInteractiveController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7A4EAC1A92959D0052151F /* EditorPresentationInteractiveController.swift */; };
+		CB7A4EAF1A9295C40052151F /* EditorDismissalInteractiveController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7A4EAE1A9295C40052151F /* EditorDismissalInteractiveController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,8 @@
 		CB4865E91A9199F000470682 /* EditorPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorPresentationController.swift; sourceTree = "<group>"; };
 		CB4865EB1A91F29300470682 /* EditorPresentationAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorPresentationAnimator.swift; sourceTree = "<group>"; };
 		CB4865ED1A9216D500470682 /* EditorDismissalAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorDismissalAnimator.swift; sourceTree = "<group>"; };
+		CB7A4EAC1A92959D0052151F /* EditorPresentationInteractiveController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorPresentationInteractiveController.swift; sourceTree = "<group>"; };
+		CB7A4EAE1A9295C40052151F /* EditorDismissalInteractiveController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorDismissalInteractiveController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +139,7 @@
 		CB4865E81A91993D00470682 /* Transition */ = {
 			isa = PBXGroup;
 			children = (
+				CB7A4EB01A9295CA0052151F /* Interaction Controllers */,
 				CB4865E61A91992A00470682 /* EditorTransitioningDelegate.swift */,
 				CB4865E91A9199F000470682 /* EditorPresentationController.swift */,
 				CB4865EF1A9216DE00470682 /* Animators */,
@@ -149,6 +154,15 @@
 				CB4865ED1A9216D500470682 /* EditorDismissalAnimator.swift */,
 			);
 			name = Animators;
+			sourceTree = "<group>";
+		};
+		CB7A4EB01A9295CA0052151F /* Interaction Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CB7A4EAC1A92959D0052151F /* EditorPresentationInteractiveController.swift */,
+				CB7A4EAE1A9295C40052151F /* EditorDismissalInteractiveController.swift */,
+			);
+			name = "Interaction Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,7 +269,9 @@
 				CB4865E71A91992A00470682 /* EditorTransitioningDelegate.swift in Sources */,
 				CB4865EC1A91F29300470682 /* EditorPresentationAnimator.swift in Sources */,
 				CB4865E21A91681E00470682 /* EditorViewController.swift in Sources */,
+				CB7A4EAF1A9295C40052151F /* EditorDismissalInteractiveController.swift in Sources */,
 				CB4865C01A91611C00470682 /* AppDelegate.swift in Sources */,
+				CB7A4EAD1A92959D0052151F /* EditorPresentationInteractiveController.swift in Sources */,
 				CB4865EE1A9216D500470682 /* EditorDismissalAnimator.swift in Sources */,
 				CB4865EA1A9199F000470682 /* EditorPresentationController.swift in Sources */,
 			);
@@ -451,6 +467,7 @@
 				CB4865DB1A91611C00470682 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CB4865DC1A91611C00470682 /* Build configuration list for PBXNativeTarget "UIPresentationController-01Tests" */ = {
 			isa = XCConfigurationList;
@@ -459,6 +476,7 @@
 				CB4865DE1A91611C00470682 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

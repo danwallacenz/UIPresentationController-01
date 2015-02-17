@@ -58,13 +58,13 @@ class EditorTransitioningDelegate: NSObject, UIViewControllerTransitioningDelega
     }
     
     // MARK: Getting the Interactive Animator Objects
-//    func interactionControllerForPresentation(animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-//        //return EditorPresentationInteractiveController()
-//        return interactivePresenter
-//    }
-//    
-//    func interactionControllerForDismissal(animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-//       // return EditorDismissalInteractiveController()
-//        return interactiveDismisser
-//    }
+    func interactionControllerForPresentation(animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        //return EditorPresentationInteractiveController()
+        return interactivePresenter
+    }
+    
+    func interactionControllerForDismissal(animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+       // return EditorDismissalInteractiveController()
+        return interactiveDismisser
+    }
 }

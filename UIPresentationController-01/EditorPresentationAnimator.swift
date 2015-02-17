@@ -12,7 +12,7 @@ class EditorPresentationAnimator: NSObject, UIViewControllerAnimatedTransitionin
    
     func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
         println("EditorPresentationAnimator - transitionDuration(transitionContext:\(transitionContext))")
-        return 0.5
+        return 0.35
     }
     
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
@@ -43,21 +43,39 @@ class EditorPresentationAnimator: NSObject, UIViewControllerAnimatedTransitionin
             transitionContext.containerView().addSubview(presentedView)
             
             UIView.animateWithDuration(self.transitionDuration(transitionContext),
-                delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 10.0, options: nil,
+                delay: 0.0,
+                options: UIViewAnimationOptions.CurveLinear,
                 animations: {
                     presentedView.center = centre
-                }, completion: {
+                },
+                completion: {
                     finished in
                         println("EditorPresentationAnimator - transaction finished = \(finished)")
                         if(transitionContext.transitionWasCancelled()) {
                             // tell our transitionContext object that we've cancelled animating
-                            
                             transitionContext.completeTransition(false)
                         } else {
                             // tell our transitionContext object that we've finished animating
                             transitionContext.completeTransition(true)
-                        }
+                    }
             })
+            
+//            UIView.animateWithDuration(self.transitionDuration(transitionContext),
+//                delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 10.0, options: nil,
+//                animations: {
+//                    presentedView.center = centre
+//                }, completion: {
+//                    finished in
+//                        println("EditorPresentationAnimator - transaction finished = \(finished)")
+//                        if(transitionContext.transitionWasCancelled()) {
+//                            // tell our transitionContext object that we've cancelled animating
+//                            
+//                            transitionContext.completeTransition(false)
+//                        } else {
+//                            // tell our transitionContext object that we've finished animating
+//                            transitionContext.completeTransition(true)
+//                        }
+//            })
         }
     }
     

@@ -28,7 +28,7 @@ class EditorDismissalInteractiveController: UIPercentDrivenInteractiveTransition
         println("*** translation = \(translation)")
         
         // do some math to translate this to a percentage based value
-        let d = translation.x / CGRectGetWidth(pan.view!.bounds) * 0.5
+        let d = translation.x / CGRectGetWidth(pan.view!.bounds) // * 0.5
         
         println("*** d = \(d)")
         

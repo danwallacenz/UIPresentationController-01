@@ -12,7 +12,7 @@ class EditorDismissalAnimator: NSObject, UIViewControllerAnimatedTransitioning {
    
     func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
         println("EditorDismissalAnimator - transitionDuration(transitionContext:\(transitionContext))")
-        return 0.5
+        return 0.35
     }
     
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
@@ -40,16 +40,16 @@ class EditorDismissalAnimator: NSObject, UIViewControllerAnimatedTransitioning {
             let centre = presentedView.center
             
             UIView.animateWithDuration(self.transitionDuration(transitionContext),
-                delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 5.0, options: nil,
+                delay: 0.0,
+                options: UIViewAnimationOptions.CurveLinear,
                 animations: {
                     presentedView.center = CGPointMake(presentedView.bounds.size.width*1.5, centre.y)
                 }, completion: {
                     finished in
-                    
                         println("EditorDismissalAnimator - transaction finished = \(finished)")
                         if(transitionContext.transitionWasCancelled()) {
                             // tell our transitionContext object that we've cancelled animating
-                            
+
                             transitionContext.completeTransition(false)
                         } else {
                             // tell our transitionContext object that we've finished animating
@@ -57,6 +57,24 @@ class EditorDismissalAnimator: NSObject, UIViewControllerAnimatedTransitioning {
 //                            presentedView.removeFromSuperview()
                         }
             })
+//            UIView.animateWithDuration(self.transitionDuration(transitionContext),
+//                delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 5.0, options: nil,
+//                animations: {
+//                    presentedView.center = CGPointMake(presentedView.bounds.size.width*1.5, centre.y)
+//                }, completion: {
+//                    finished in
+//                    
+//                        println("EditorDismissalAnimator - transaction finished = \(finished)")
+//                        if(transitionContext.transitionWasCancelled()) {
+//                            // tell our transitionContext object that we've cancelled animating
+//                            
+//                            transitionContext.completeTransition(false)
+//                        } else {
+//                            // tell our transitionContext object that we've finished animating
+//                            transitionContext.completeTransition(true)
+////                            presentedView.removeFromSuperview()
+//                        }
+//            })
         }
     }
     

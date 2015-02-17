@@ -69,4 +69,9 @@ class EditorPresentationController: UIPresentationController {
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
         println("EditorPresentationController - viewWillTransitionToSize(size:\(size) coordinator:\(coordinator))")
     }
+    
+    // MARK: Adjusting the Size and Layout of the Presentation
+//    override func frameOfPresentedViewInContainerView() -> CGRect {
+//        return containerView.bounds.rectByInsetting(dx: 30, dy: 30) // Doesn't work!!
+//    }
 }

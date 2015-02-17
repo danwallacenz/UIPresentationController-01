@@ -10,6 +10,8 @@ import UIKit
 
 class EditorDismissalInteractiveController: UIPercentDrivenInteractiveTransition {
    
+    var interactive = false
+    
     var editorVC: UIViewController! {
         didSet {
             println("EditorDismissalInteractiveController didSet editorVC = \(editorVC)")
@@ -35,6 +37,7 @@ class EditorDismissalInteractiveController: UIPercentDrivenInteractiveTransition
         switch (pan.state) {
             
         case UIGestureRecognizerState.Began:
+            self.interactive = true
             editorVC?.dismissViewControllerAnimated(true, completion: nil)
             
         case UIGestureRecognizerState.Changed:
@@ -47,6 +50,7 @@ class EditorDismissalInteractiveController: UIPercentDrivenInteractiveTransition
             // return interactive  flag to false and finish or cancel the transition
             println("*** EditorDismissalInteractiveController - handlePresentationPan UIGestureRecognizerState.Ended")
             
+            self.interactive = false
             if d > 0.2 {
                 // threshold crossed: finish
                 self.finishInteractiveTransition()

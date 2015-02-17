@@ -10,4 +10,9 @@ import UIKit
 
 class EditorPresentationInteractiveController: UIPercentDrivenInteractiveTransition {
    
+    var readOnlyVC: UIViewController! {
+        didSet {
+            println("EditorPresentationInteractiveController didSet readOnlyVC = \(readOnlyVC)")
+        }
+    }
 }

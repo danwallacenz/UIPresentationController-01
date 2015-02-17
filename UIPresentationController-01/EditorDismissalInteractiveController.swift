@@ -10,4 +10,9 @@ import UIKit
 
 class EditorDismissalInteractiveController: UIPercentDrivenInteractiveTransition {
    
+    var editorVC: UIViewController! {
+        didSet {
+            println("EditorDismissalInteractiveController didSet editorVC = \(editorVC)")
+        }
+    }
 }

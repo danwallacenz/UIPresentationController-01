@@ -10,23 +10,20 @@ import UIKit
 
 class EditorTransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
    
+    let interactivePresenter  = EditorPresentationInteractiveController()
+    let interactiveDismisser  = EditorDismissalInteractiveController()
     
-    
-    var presentingController: UIViewController! {
+    var readOnlyVC: UIViewController! {
         didSet {
-            
+            println("EditorTransitioningDelegate didSet readOnlyVC = \(readOnlyVC)")
+            interactivePresenter.readOnlyVC = readOnlyVC
         }
     }
     
-    var presentedController: UIViewController! {
+    var editorVC: UIViewController! {
         didSet {
-            
-        }
-    }
-    
-    var sourceController: UIViewController! {
-        didSet {
-            
+            println("EditorTransitioningDelegate didSet editorVC = \(editorVC)")
+            interactiveDismisser.editorVC = editorVC
         }
     }
     
@@ -45,10 +42,6 @@ class EditorTransitioningDelegate: NSObject, UIViewControllerTransitioningDelega
     func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         println("EditorTransitioningDelegate - animationControllerForPresentedController(presented:\(presented) presenting:\(presenting) source: \(source)")
         
-        self.presentingController = presented
-        self.presentedController = presenting
-        self.sourceController = source
-        
         return EditorPresentationAnimator()
     }
     
@@ -66,10 +59,12 @@ class EditorTransitioningDelegate: NSObject, UIViewControllerTransitioningDelega
     
     // MARK: Getting the Interactive Animator Objects
 //    func interactionControllerForPresentation(animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-//        return EditorPresentationInteractiveController()
+//        //return EditorPresentationInteractiveController()
+//        return interactivePresenter
 //    }
 //    
 //    func interactionControllerForDismissal(animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-//        return EditorDismissalInteractiveController()
+//       // return EditorDismissalInteractiveController()
+//        return interactiveDismisser
 //    }
 }

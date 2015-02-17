@@ -21,10 +21,12 @@ class ReadOnlyViewController: UIViewController {
     private func prepareEditorVC(editorVC: UIViewController) {
         editorVC.modalPresentationStyle = UIModalPresentationStyle.Custom
         editorVC.transitioningDelegate = editorTransitioningDelegate
+        editorTransitioningDelegate.editorVC = editorVC
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        editorTransitioningDelegate.readOnlyVC = self
     }
 }

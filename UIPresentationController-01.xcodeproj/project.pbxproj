@@ -91,12 +91,9 @@
 		CB4865BC1A91611C00470682 /* UIPresentationController-01 */ = {
 			isa = PBXGroup;
 			children = (
-				CB4865E81A91993D00470682 /* Transition */,
-				CB4865BF1A91611C00470682 /* AppDelegate.swift */,
 				CB4865C31A91611C00470682 /* Main.storyboard */,
 				CB4865E31A91683400470682 /* VCs */,
-				CB4865C61A91611C00470682 /* Images.xcassets */,
-				CB4865C81A91611C00470682 /* LaunchScreen.xib */,
+				CB4865E81A91993D00470682 /* Transition */,
 				CB4865BD1A91611C00470682 /* Supporting Files */,
 			);
 			path = "UIPresentationController-01";
@@ -105,6 +102,9 @@
 		CB4865BD1A91611C00470682 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CB4865C61A91611C00470682 /* Images.xcassets */,
+				CB4865C81A91611C00470682 /* LaunchScreen.xib */,
+				CB4865BF1A91611C00470682 /* AppDelegate.swift */,
 				CB4865BE1A91611C00470682 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -139,9 +139,9 @@
 		CB4865E81A91993D00470682 /* Transition */ = {
 			isa = PBXGroup;
 			children = (
-				CB7A4EB01A9295CA0052151F /* Interaction Controllers */,
 				CB4865E61A91992A00470682 /* EditorTransitioningDelegate.swift */,
 				CB4865E91A9199F000470682 /* EditorPresentationController.swift */,
+				CB7A4EB01A9295CA0052151F /* Interaction Controllers */,
 				CB4865EF1A9216DE00470682 /* Animators */,
 			);
 			name = Transition;

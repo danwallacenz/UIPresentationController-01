@@ -38,7 +38,7 @@ class EditorPresentationAnimator: NSObject, UIViewControllerAnimatedTransitionin
         if let presentedView = transitionContext.viewForKey(UITransitionContextToViewKey) {
             
             let centre = presentedView.center
-            presentedView.center = CGPointMake(presentedView.bounds.size.width, centre.y)
+            presentedView.center = CGPointMake(presentedView.bounds.size.width * 1.5, centre.y)
             
             transitionContext.containerView().addSubview(presentedView)
             
@@ -47,8 +47,16 @@ class EditorPresentationAnimator: NSObject, UIViewControllerAnimatedTransitionin
                 animations: {
                     presentedView.center = centre
                 }, completion: {
-                    _ in
-                    transitionContext.completeTransition(true)
+                    finished in
+                        println("EditorPresentationAnimator - transaction finished = \(finished)")
+                        if(transitionContext.transitionWasCancelled()) {
+                            // tell our transitionContext object that we've cancelled animating
+                            
+                            transitionContext.completeTransition(false)
+                        } else {
+                            // tell our transitionContext object that we've finished animating
+                            transitionContext.completeTransition(true)
+                        }
             })
         }
     }

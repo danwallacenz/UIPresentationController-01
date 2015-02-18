@@ -68,6 +68,7 @@ class EditorTransitioningDelegate: NSObject, UIViewControllerTransitioningDelega
     
     func interactionControllerForDismissal(animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
        // return EditorDismissalInteractiveController()
-        return interactiveDismisser.interactive ? interactiveDismisser : nil
+//        return interactiveDismisser.interactive ? interactiveDismisser : nil
+        return self.interactive ? interactiveDismisser : nil
     }
 }

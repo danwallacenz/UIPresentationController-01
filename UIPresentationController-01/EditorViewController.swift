@@ -11,7 +11,12 @@ import UIKit
 class EditorViewController: UIViewController {
 
     @IBAction func dismissButtonPressed() {
-        presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+        if let editorTransitioningDelegate = transitioningDelegate as? EditorTransitioningDelegate {
+            
+            editorTransitioningDelegate.interactive = false
+            presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+            editorTransitioningDelegate.interactive = true
+        }
     }
     
     override func viewDidLoad() {

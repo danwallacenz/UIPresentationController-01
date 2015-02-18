@@ -24,15 +24,13 @@ class EditorPresentationController: UIPresentationController {
         super.presentationTransitionWillBegin()
         println("\nEditorPresentationController - presentationTransitionWillBegin()")
         println("EditorPresentationController - presentationTransitionWillBegin() containerView is \(containerView)")
-        addBlur()
+//        addBlur()
     }
     
     override func presentationTransitionDidEnd(completed: Bool) {
         super.presentationTransitionDidEnd(completed)
         println("EditorPresentationController - presentationTransitionDidEnd(\(completed))")
-
     }
-
 
     private func addBlur() {
         let blurEffect = UIBlurEffect(style: .Light)

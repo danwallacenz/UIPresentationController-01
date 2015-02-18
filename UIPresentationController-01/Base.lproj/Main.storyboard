@@ -66,6 +66,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xas-wk-AxP">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="UYj-lg-bAY">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Editor" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ymi-Pz-Mgg">
                                 <rect key="frame" x="16" y="282" width="568" height="36"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="30"/>
@@ -88,8 +96,12 @@
                             <constraint firstItem="ymi-Pz-Mgg" firstAttribute="trailing" secondItem="IfS-ZD-6AZ" secondAttribute="trailingMargin" id="EN2-YN-RvH"/>
                             <constraint firstAttribute="centerX" secondItem="ymi-Pz-Mgg" secondAttribute="centerX" id="FdF-Do-sPe"/>
                             <constraint firstItem="EYx-qd-7xH" firstAttribute="trailing" secondItem="IfS-ZD-6AZ" secondAttribute="trailingMargin" id="IdR-Uk-5lu"/>
+                            <constraint firstAttribute="height" secondItem="Xas-wk-AxP" secondAttribute="height" id="SAB-wi-cS1"/>
+                            <constraint firstAttribute="centerY" secondItem="Xas-wk-AxP" secondAttribute="centerY" id="az3-a7-NAF"/>
+                            <constraint firstAttribute="centerX" secondItem="Xas-wk-AxP" secondAttribute="centerX" id="bO6-jf-Xqb"/>
                             <constraint firstItem="4BU-bW-cSJ" firstAttribute="top" secondItem="EYx-qd-7xH" secondAttribute="bottom" constant="20" id="gRe-nN-ugM"/>
                             <constraint firstItem="ymi-Pz-Mgg" firstAttribute="leading" secondItem="IfS-ZD-6AZ" secondAttribute="leadingMargin" id="pEY-xh-rV7"/>
+                            <constraint firstAttribute="width" secondItem="Xas-wk-AxP" secondAttribute="width" id="umD-IG-NYJ"/>
                         </constraints>
                     </view>
                 </viewController>

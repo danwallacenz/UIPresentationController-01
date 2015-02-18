@@ -18,31 +18,40 @@ class EditorPresentationController: UIPresentationController {
 //        dimmingView.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
     }
     
-    // MARK: The presentation phase
-    // ...  involves moving the new view controller onscreen through a series of transition animations.
-//    override func presentationTransitionWillBegin() {
-//        super.presentationTransitionWillBegin()
-//        println("\nEditorPresentationController - presentationTransitionWillBegin()")
-//        println("EditorPresentationController - presentationTransitionWillBegin() containerView is \(containerView)")
-//        
-//    }
-//    
-//    override func presentationTransitionDidEnd(completed: Bool) {
-//        super.presentationTransitionDidEnd(completed)
-//         println("EditorPresentationController - presentationTransitionDidEnd(\(completed))")
-//    }
+     // MARK: The presentation phase
+     // ...  involves moving the new view controller onscreen through a series of transition animations.
+    override func presentationTransitionWillBegin() {
+        super.presentationTransitionWillBegin()
+        println("\nEditorPresentationController - presentationTransitionWillBegin()")
+        println("EditorPresentationController - presentationTransitionWillBegin() containerView is \(containerView)")
+    }
+    
+    override func presentationTransitionDidEnd(completed: Bool) {
+        super.presentationTransitionDidEnd(completed)
+         println("EditorPresentationController - presentationTransitionDidEnd(\(completed))")
+        let blurEffect = UIBlurEffect(style: .Light)
+        
+        // Create a UIVisualEffectView and tell it which effect to use. This class is a subclass of UIView; its sole purpose is to define and display complex visual effects.
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        blurView.frame = self.presentedView().frame
+        
+        //  Disable translating the auto-resizing masks into constraints on the blurView, as you’ll manually add constraints in just a moment, and add it at the bottom of view stack.
+        // If you just added blurView on top of the view, it would end up blurring all of the controls underneath it instead!
+        //        blurView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.presentedView().insertSubview(blurView, atIndex: 0)
+    }
 
-    // MARK: The dismissal phase
-    // ... involves moving the new view controller off screen through a series of transition animations.
-//    override func dismissalTransitionWillBegin() {
-//        super.dismissalTransitionWillBegin()
-//        println("\nEditorPresentationController - dismissalTransitionWillBegin")
-//    }
-//    
-//    override func dismissalTransitionDidEnd(completed: Bool) {
-//        super.dismissalTransitionDidEnd(completed)
-//        println("EditorPresentationController - dismissalTransitionDidEnd(\(completed))")
-//    }
+     // MARK: The dismissal phase
+     //... involves moving the new view controller off screen through a series of transition animations.
+    override func dismissalTransitionWillBegin() {
+        super.dismissalTransitionWillBegin()
+        println("\nEditorPresentationController - dismissalTransitionWillBegin")
+    }
+    
+    override func dismissalTransitionDidEnd(completed: Bool) {
+        super.dismissalTransitionDidEnd(completed)
+        println("EditorPresentationController - dismissalTransitionDidEnd(\(completed))")
+    }
     
     // MARK: The management phase
     // ... involves responding to environment changes (such as device rotations) while the new view controller is onscreen.

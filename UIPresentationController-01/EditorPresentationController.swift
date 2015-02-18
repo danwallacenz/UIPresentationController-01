@@ -24,7 +24,7 @@ class EditorPresentationController: UIPresentationController {
         super.presentationTransitionWillBegin()
         println("\nEditorPresentationController - presentationTransitionWillBegin()")
         println("EditorPresentationController - presentationTransitionWillBegin() containerView is \(containerView)")
-//        addBlur()
+        addBlur()
     }
     
     override func presentationTransitionDidEnd(completed: Bool) {
@@ -33,7 +33,8 @@ class EditorPresentationController: UIPresentationController {
     }
 
     private func addBlur() {
-        let blurEffect = UIBlurEffect(style: .Light)
+        
+        let blurEffect = UIBlurEffect(style: .ExtraLight)
         
         // Create a UIVisualEffectView and tell it which effect to use. This class is a subclass of UIView; its sole purpose is to define and display complex visual effects.
         let blurView = UIVisualEffectView(effect: blurEffect)
@@ -41,8 +42,18 @@ class EditorPresentationController: UIPresentationController {
         
         //  Disable translating the auto-resizing masks into constraints on the blurView, as you’ll manually add constraints in just a moment, and add it at the bottom of view stack.
         // If you just added blurView on top of the view, it would end up blurring all of the controls underneath it instead!
-        //        blurView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        blurView.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.presentedView().insertSubview(blurView, atIndex: 0)
+        
+        var constraints = [NSLayoutConstraint]()
+        // blurView constraints
+        constraints.append(NSLayoutConstraint(item: blurView, attribute: .Height, relatedBy: .Equal,
+            toItem: self.presentedView(), attribute: .Height, multiplier: 1, constant: 0))
+        
+        constraints.append(NSLayoutConstraint(item: blurView, attribute: .Width, relatedBy: .Equal,
+            toItem: self.presentedView(), attribute: .Width, multiplier: 1, constant: 0))
+        
+        self.presentedView().addConstraints(constraints)
     }
     
      // MARK: The dismissal phase

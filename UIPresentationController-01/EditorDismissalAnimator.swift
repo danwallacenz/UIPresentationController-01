@@ -17,26 +17,7 @@ class EditorDismissalAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
         
-        // -------------------------------------------------------------------------------------------------
-        println("/EditorDismissalAnimator - animateTransition(transitionContext:\(transitionContext))")
-        
-        let fromView = transitionContext.viewForKey(UITransitionContextFromViewKey)
-        let fromViewController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)
-        
-        println("EditorDismissalAnimator - animateTransition fromView = \(fromView)")
-        println("EditorDismissalAnimator - animateTransition fromViewController = \(fromViewController)")
-        
-        let toView = transitionContext.viewForKey(UITransitionContextToViewKey)
-        let toViewController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)
-        println("EditorDismissalAnimator - animateTransition toView = \(toView)")
-        println("EditorDismissalAnimator - animateTransition toViewController = \(toViewController)")
-        
-        let containerView = transitionContext.containerView()
-        println("EditorDismissalAnimator - animateTransition containerView = \(containerView)")
-        // -------------------------------------------------------------------------------------------------
-        
         if let presentedView = transitionContext.viewForKey(UITransitionContextFromViewKey) {
-            
             let centre = presentedView.center
             
             UIView.animateWithDuration(self.transitionDuration(transitionContext),
@@ -48,45 +29,15 @@ class EditorDismissalAnimator: NSObject, UIViewControllerAnimatedTransitioning {
                     finished in
                         println("EditorDismissalAnimator - transaction finished = \(finished)")
                         if(transitionContext.transitionWasCancelled()) {
-                            // tell our transitionContext object that we've cancelled animating
-
                             transitionContext.completeTransition(false)
                         } else {
-                            // tell our transitionContext object that we've finished animating
                             transitionContext.completeTransition(true)
-//                            presentedView.removeFromSuperview()
                         }
             })
-//            UIView.animateWithDuration(self.transitionDuration(transitionContext),
-//                delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 5.0, options: nil,
-//                animations: {
-//                    presentedView.center = CGPointMake(presentedView.bounds.size.width*1.5, centre.y)
-//                }, completion: {
-//                    finished in
-//                    
-//                        println("EditorDismissalAnimator - transaction finished = \(finished)")
-//                        if(transitionContext.transitionWasCancelled()) {
-//                            // tell our transitionContext object that we've cancelled animating
-//                            
-//                            transitionContext.completeTransition(false)
-//                        } else {
-//                            // tell our transitionContext object that we've finished animating
-//                            transitionContext.completeTransition(true)
-////                            presentedView.removeFromSuperview()
-//                        }
-//            })
         }
     }
     
-    override func animationDidStart(anim: CAAnimation!) {
-        println("EditorDismissalAnimator -animationDidStart(anim: \(anim))")
-    }
-    
-    override func animationDidStop(anim: CAAnimation!, finished flag: Bool) {
-        println("EditorDismissalAnimator - animationDidStop(anim:\(anim), finished:\(flag))")
-    }
-    
-    func animationEnded(transitionCompleted: Bool) {
-        println("EditorDismissalAnimator - animationEnded(transitionCompleted:\(transitionCompleted))")
-    }
+//    func animationEnded(transitionCompleted: Bool) {
+//        println("EditorDismissalAnimator - animationEnded(transitionCompleted:\(transitionCompleted))")
+//    }
 }

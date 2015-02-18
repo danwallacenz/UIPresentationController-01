@@ -18,9 +18,4 @@ class EditorViewController: UIViewController {
             editorTransitioningDelegate.interactive = true
         }
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
 }

@@ -13,18 +13,21 @@ class ReadOnlyViewController: UIViewController {
     let editorTransitioningDelegate =  EditorTransitioningDelegate()
     
     @IBAction func EditButtonPressed() {
+        
         editorTransitioningDelegate.interactive = false
         presentEditor()
         editorTransitioningDelegate.interactive = true
     }
     
     func presentEditor() {
+        
         let editorVC = self.storyboard?.instantiateViewControllerWithIdentifier("Editor") as UIViewController
         prepareEditorVC(editorVC)
         self.presentViewController(editorVC, animated: true, completion: nil)
     }
     
     private func prepareEditorVC(editorVC: UIViewController) {
+        
         editorVC.modalPresentationStyle = UIModalPresentationStyle.Custom
         editorVC.transitioningDelegate = editorTransitioningDelegate
         editorTransitioningDelegate.editorVC = editorVC
@@ -32,7 +35,7 @@ class ReadOnlyViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
         editorTransitioningDelegate.readOnlyVC = self
     }
 }

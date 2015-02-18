@@ -15,60 +15,47 @@ class EditorTransitioningDelegate: NSObject, UIViewControllerTransitioningDelega
     
     var interactive = true
     
+    
+    // Pass these VCs through to the interaction controllers
+    // MARK: Pass through the VCs
     var readOnlyVC: UIViewController! {
         didSet {
-            println("EditorTransitioningDelegate didSet readOnlyVC = \(readOnlyVC)")
             interactivePresenter.readOnlyVC = readOnlyVC
         }
     }
-    
     var editorVC: UIViewController! {
         didSet {
-            println("EditorTransitioningDelegate didSet editorVC = \(editorVC)")
             interactiveDismisser.editorVC = editorVC
         }
     }
+    
     
     // MARK: Getting the Custom Presentation Controller
     func presentationControllerForPresentedViewController(presented: UIViewController!,
         presentingViewController presenting: UIViewController!,
         sourceViewController source: UIViewController!) -> UIPresentationController! {
-            
-            println("EditorTransitioningDelegate - presentationControllerForPresentedViewController(presented:\(presented) presenting:\(presenting) source: \(source)")
-            
+
             return EditorPresentationController(presentedViewController: presented,
                 presentingViewController: presenting)
     }
     
+    
     // MARK: Getting the Transition Animator Objects
     func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        println("EditorTransitioningDelegate - animationControllerForPresentedController(presented:\(presented) presenting:\(presenting) source: \(source)")
-        
         return EditorPresentationAnimator()
     }
     
     func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return EditorDismissalAnimator()
     }
-    
-    override func animationDidStart(anim: CAAnimation!) {
-        println("EditorTransitioningDelegate - animationDidStart(anim: \(anim))")
-    }
-    
-    override func animationDidStop(anim: CAAnimation!, finished flag: Bool) {
-        println("EditorTransitioningDelegate - animationDidStop(anim: \(anim), finished:\(flag))")
-    }
+
     
     // MARK: Getting the Interactive Animator Objects
     func interactionControllerForPresentation(animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        //return EditorPresentationInteractiveController()
-//        return interactivePresenter
         return self.interactive ? interactivePresenter : nil
     }
     
     func interactionControllerForDismissal(animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-       // return EditorDismissalInteractiveController()
-//        return interactiveDismisser.interactive ? interactiveDismisser : nil
         return self.interactive ? interactiveDismisser : nil
     }
 }

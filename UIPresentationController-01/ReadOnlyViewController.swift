@@ -16,9 +16,6 @@ class ReadOnlyViewController: UIViewController {
         editorTransitioningDelegate.interactive = false
         presentEditor()
         editorTransitioningDelegate.interactive = true
-//        let editorVC = self.storyboard?.instantiateViewControllerWithIdentifier("Editor") as UIViewController
-//        prepareEditorVC(editorVC)
-//        self.presentViewController(editorVC, animated: true, completion: nil)
     }
     
     func presentEditor() {

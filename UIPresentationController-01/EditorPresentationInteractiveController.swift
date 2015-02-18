@@ -10,7 +10,7 @@ import UIKit
 
 class EditorPresentationInteractiveController: UIPercentDrivenInteractiveTransition {
    
-    var interactive = false
+//    var interactive = false
     
     var readOnlyVC: UIViewController! {
         didSet {
@@ -42,7 +42,7 @@ class EditorPresentationInteractiveController: UIPercentDrivenInteractiveTransit
             if let readOnlyViewController = readOnlyVC as? ReadOnlyViewController{
                 readOnlyViewController.presentEditor()
             }
-            self.interactive = true
+//            self.interactive = true
             
         case UIGestureRecognizerState.Changed:
              println("*** EditorPresentationInteractiveController - handlePresentationPan UIGestureRecognizerState.Changed")
@@ -54,7 +54,7 @@ class EditorPresentationInteractiveController: UIPercentDrivenInteractiveTransit
             // return interactive  flag to false and finish or cancel the transition
              println("*** EditorPresentationInteractiveController - handlePresentationPan UIGestureRecognizerState.Ended")
             
-             self.interactive = false
+//             self.interactive = false
              
             if d > 0.2 {
                 // threshold crossed: finish

@@ -24,11 +24,17 @@ class EditorPresentationController: UIPresentationController {
         super.presentationTransitionWillBegin()
         println("\nEditorPresentationController - presentationTransitionWillBegin()")
         println("EditorPresentationController - presentationTransitionWillBegin() containerView is \(containerView)")
+        addBlur()
     }
     
     override func presentationTransitionDidEnd(completed: Bool) {
         super.presentationTransitionDidEnd(completed)
-         println("EditorPresentationController - presentationTransitionDidEnd(\(completed))")
+        println("EditorPresentationController - presentationTransitionDidEnd(\(completed))")
+
+    }
+
+
+    private func addBlur() {
         let blurEffect = UIBlurEffect(style: .Light)
         
         // Create a UIVisualEffectView and tell it which effect to use. This class is a subclass of UIView; its sole purpose is to define and display complex visual effects.
@@ -40,7 +46,7 @@ class EditorPresentationController: UIPresentationController {
         //        blurView.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.presentedView().insertSubview(blurView, atIndex: 0)
     }
-
+    
      // MARK: The dismissal phase
      //... involves moving the new view controller off screen through a series of transition animations.
     override func dismissalTransitionWillBegin() {

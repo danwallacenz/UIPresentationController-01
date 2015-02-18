@@ -13,6 +13,8 @@ class EditorTransitioningDelegate: NSObject, UIViewControllerTransitioningDelega
     let interactivePresenter  = EditorPresentationInteractiveController()
     let interactiveDismisser  = EditorDismissalInteractiveController()
     
+    var interactive = true
+    
     var readOnlyVC: UIViewController! {
         didSet {
             println("EditorTransitioningDelegate didSet readOnlyVC = \(readOnlyVC)")
@@ -61,7 +63,7 @@ class EditorTransitioningDelegate: NSObject, UIViewControllerTransitioningDelega
     func interactionControllerForPresentation(animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         //return EditorPresentationInteractiveController()
 //        return interactivePresenter
-        return interactivePresenter.interactive ? interactivePresenter : nil
+        return self.interactive ? interactivePresenter : nil
     }
     
     func interactionControllerForDismissal(animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {

@@ -13,6 +13,7 @@ class ReadOnlyViewController: UIViewController {
     let editorTransitioningDelegate =  EditorTransitioningDelegate()
     
     @IBAction func EditButtonPressed() {
+        editorTransitioningDelegate.interactive = false
         presentEditor()
 //        let editorVC = self.storyboard?.instantiateViewControllerWithIdentifier("Editor") as UIViewController
 //        prepareEditorVC(editorVC)

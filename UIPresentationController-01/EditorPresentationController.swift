@@ -80,8 +80,9 @@ class EditorPresentationController: UIPresentationController {
                 
                 
                 // remove layout constraints for content view
-                
-                editorVC.contentViewContraints = nil
+//                editorVC.contentViewContraints = nil
+                self.presentedView().removeConstraints(editorVC.contentViewContraints)
+
                 vibrancyEffectView.contentView.addSubview(contentView)
                 blurEffectView.contentView.addSubview(vibrancyEffectView)
                 

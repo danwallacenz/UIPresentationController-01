@@ -12,6 +12,8 @@ class EditorViewController: UIViewController {
 
     @IBOutlet weak var contentView: UIView!
     
+    @IBOutlet var contentViewContraints: [NSLayoutConstraint]!
+    
     @IBAction func dismissButtonPressed() {
         if let editorTransitioningDelegate = transitioningDelegate as? EditorTransitioningDelegate {
             
@@ -19,5 +21,9 @@ class EditorViewController: UIViewController {
             presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
             editorTransitioningDelegate.interactive = true
         }
+    }
+    
+    override func viewDidLoad() {
+        println("\(contentViewContraints.count)")
     }
 }

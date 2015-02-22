@@ -123,6 +123,10 @@
                     </view>
                     <connections>
                         <outlet property="contentView" destination="dxW-KT-9JW" id="0Jh-JZ-lWM"/>
+                        <outletCollection property="contentViewContraints" destination="f5R-FP-Y0W" collectionClass="NSMutableArray" id="mqK-Lu-eGE"/>
+                        <outletCollection property="contentViewContraints" destination="NnC-2T-wUA" collectionClass="NSMutableArray" id="A4e-Fz-CRj"/>
+                        <outletCollection property="contentViewContraints" destination="oLK-r2-rfc" collectionClass="NSMutableArray" id="VGx-0N-KOa"/>
+                        <outletCollection property="contentViewContraints" destination="xmE-Yh-kA5" collectionClass="NSMutableArray" id="kbi-gj-9uS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B00-hb-dTJ" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -34,6 +34,13 @@ class EditorPresentationController: UIPresentationController {
 
     private func addBlur() {
         
+        if let editorVC = presentedViewController as? EditorViewController {
+            if let contentView = editorVC.contentView {
+                println("temp!!!!!!")
+                contentView.backgroundColor = UIColor.redColor().colorWithAlphaComponent(0.4)
+            }
+        }
+        
         let blurEffect = UIBlurEffect(style: .ExtraLight)
         
         // Create a UIVisualEffectView and tell it which effect to use. This class is a subclass of UIView; its sole purpose is to define and display complex visual effects.

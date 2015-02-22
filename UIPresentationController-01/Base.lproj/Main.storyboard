@@ -121,6 +121,9 @@
                             <constraint firstAttribute="centerX" secondItem="dxW-KT-9JW" secondAttribute="centerX" id="xmE-Yh-kA5"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="contentView" destination="dxW-KT-9JW" id="0Jh-JZ-lWM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B00-hb-dTJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

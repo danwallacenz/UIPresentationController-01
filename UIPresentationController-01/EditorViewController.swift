@@ -10,6 +10,8 @@ import UIKit
 
 class EditorViewController: UIViewController {
 
+    @IBOutlet weak var contentView: UIView!
+    
     @IBAction func dismissButtonPressed() {
         if let editorTransitioningDelegate = transitioningDelegate as? EditorTransitioningDelegate {
             

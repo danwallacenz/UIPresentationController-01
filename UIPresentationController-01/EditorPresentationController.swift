@@ -24,8 +24,8 @@ class EditorPresentationController: UIPresentationController {
         super.presentationTransitionWillBegin()
         println("\nEditorPresentationController - presentationTransitionWillBegin()")
         println("EditorPresentationController - presentationTransitionWillBegin() containerView is \(containerView)")
-//        addBlur()
-        addVibrancy()
+        addBlur()
+//        addVibrancy()
     }
     
     override func presentationTransitionDidEnd(completed: Bool) {

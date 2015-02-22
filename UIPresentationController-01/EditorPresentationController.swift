@@ -24,7 +24,8 @@ class EditorPresentationController: UIPresentationController {
         super.presentationTransitionWillBegin()
         println("\nEditorPresentationController - presentationTransitionWillBegin()")
         println("EditorPresentationController - presentationTransitionWillBegin() containerView is \(containerView)")
-        addBlur()
+//        addBlur()
+        addVibrancy()
     }
     
     override func presentationTransitionDidEnd(completed: Bool) {
@@ -32,14 +33,16 @@ class EditorPresentationController: UIPresentationController {
         println("EditorPresentationController - presentationTransitionDidEnd(\(completed))")
     }
 
+    
+    // MARK: UIVisualEffects
     private func addBlur() {
         
-        if let editorVC = presentedViewController as? EditorViewController {
-            if let contentView = editorVC.contentView {
-                println("temp!!!!!!")
-                contentView.backgroundColor = UIColor.redColor().colorWithAlphaComponent(0.4)
-            }
-        }
+//        if let editorVC = presentedViewController as? EditorViewController {
+//            if let contentView = editorVC.contentView {
+//                println("temp!!!!!!")
+//                contentView.backgroundColor = UIColor.redColor().colorWithAlphaComponent(0.4)
+//            }
+//        }
         
         let blurEffect = UIBlurEffect(style: .ExtraLight)
         
@@ -52,8 +55,9 @@ class EditorPresentationController: UIPresentationController {
         blurView.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.presentedView().insertSubview(blurView, atIndex: 0)
         
-        var constraints = [NSLayoutConstraint]()
         // blurView constraints
+        var constraints = [NSLayoutConstraint]()
+        
         constraints.append(NSLayoutConstraint(item: blurView, attribute: .Height, relatedBy: .Equal,
             toItem: self.presentedView(), attribute: .Height, multiplier: 1, constant: 0))
         
@@ -62,6 +66,53 @@ class EditorPresentationController: UIPresentationController {
         
         self.presentedView().addConstraints(constraints)
     }
+    
+    private func addVibrancy() {
+        if let editorVC = presentedViewController as? EditorViewController {
+            if let contentView = editorVC.contentView {
+                println("contentView:\(contentView)")
+//                contentView.backgroundColor = UIColor.redColor().colorWithAlphaComponent(0.4)
+                
+                let blurEffect = UIBlurEffect(style: .ExtraLight)
+                let blurEffectView = UIVisualEffectView(effect: blurEffect)
+                let vibrancyEffect = UIVibrancyEffect(forBlurEffect: blurEffect)
+                let vibrancyEffectView = UIVisualEffectView(effect: vibrancyEffect)
+                
+                
+                // remove layout constraints for content view
+                
+                editorVC.contentViewContraints = nil
+                vibrancyEffectView.contentView.addSubview(contentView)
+                blurEffectView.contentView.addSubview(vibrancyEffectView)
+                
+                self.presentedView().insertSubview(blurEffectView, atIndex: 0)
+                
+                contentView.setTranslatesAutoresizingMaskIntoConstraints(false)
+                blurEffectView.setTranslatesAutoresizingMaskIntoConstraints(false)
+                vibrancyEffectView.setTranslatesAutoresizingMaskIntoConstraints(false)
+                
+                applyEqualSizeConstraints(vibrancyEffectView.contentView, v2: contentView, includeTop: false)
+                applyEqualSizeConstraints(blurEffectView.contentView, v2: vibrancyEffectView, includeTop: false)
+                applyEqualSizeConstraints(self.presentedView(), v2: blurEffectView, includeTop: false)
+            }
+        }
+    }
+    
+    private func applyEqualSizeConstraints(v1: UIView, v2: UIView, includeTop: Bool) {
+        v1.addConstraint(NSLayoutConstraint(item: v1, attribute: .Left,
+        relatedBy: .Equal, toItem: v2, attribute: .Left,
+        multiplier: 1, constant: 0))
+        v1.addConstraint(NSLayoutConstraint(item: v1, attribute: .Right,
+        relatedBy: .Equal, toItem: v2, attribute: .Right,
+        multiplier: 1, constant: 0))
+        v1.addConstraint(NSLayoutConstraint(item: v1, attribute: .Bottom,
+        relatedBy: .Equal, toItem: v2, attribute: .Bottom,
+        multiplier: 1, constant: 0))
+        v1.addConstraint(NSLayoutConstraint(item: v1, attribute: .Top,
+        relatedBy: .Equal, toItem: v2, attribute: .Top,
+        multiplier: 1, constant: 0))
+    }
+    
     
      // MARK: The dismissal phase
      //... involves moving the new view controller off screen through a series of transition animations.

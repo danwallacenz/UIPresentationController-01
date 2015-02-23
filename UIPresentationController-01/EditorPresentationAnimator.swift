@@ -11,7 +11,7 @@ import UIKit
 class EditorPresentationAnimator: NSObject, UIViewControllerAnimatedTransitioning {
    
     func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
-        return 0.35
+        return 0.4
     }
     
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
@@ -24,20 +24,37 @@ class EditorPresentationAnimator: NSObject, UIViewControllerAnimatedTransitionin
             
             transitionContext.containerView().addSubview(presentedView)
             
-            UIView.animateWithDuration(self.transitionDuration(transitionContext),
-                delay: 0.0,
-                options: UIViewAnimationOptions.CurveLinear,
-                animations: {
-                    presentedView.center = centre
-                },
-                completion: {
-                    finished in
-                        if(transitionContext.transitionWasCancelled()) {
-                            transitionContext.completeTransition(false)
-                        } else {
-                            transitionContext.completeTransition(true)
-                    }
-            })
+            if(transitionContext.isInteractive()){
+                
+                UIView.animateWithDuration(self.transitionDuration(transitionContext),
+                    delay: 0.0,
+                    options: UIViewAnimationOptions.CurveLinear,
+                    animations: {
+                        presentedView.center = centre
+                    },
+                    completion: {
+                        finished in
+                            if(transitionContext.transitionWasCancelled()) {
+                                transitionContext.completeTransition(false)
+                            } else {
+                                transitionContext.completeTransition(true)
+                        }
+                })
+            } else {
+                    // non-interactive - gradual stop
+                    UIView.animateWithDuration(self.transitionDuration(transitionContext),
+                        delay: 0.0,
+                        usingSpringWithDamping: 1.0,
+                        initialSpringVelocity: 1,
+                        options: nil,
+                        animations: {
+                            presentedView.center = centre
+                        },
+                        completion: {
+                            finished in
+                                transitionContext.completeTransition(true)
+                })
+            }
         }
     }
     

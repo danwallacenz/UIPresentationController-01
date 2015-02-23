@@ -12,7 +12,7 @@ class EditorDismissalAnimator: NSObject, UIViewControllerAnimatedTransitioning {
    
     func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
         println("EditorDismissalAnimator - transitionDuration(transitionContext:\(transitionContext))")
-        return 0.35
+        return 0.6
     }
     
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
@@ -22,20 +22,37 @@ class EditorDismissalAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         if let presentedView = transitionContext.viewForKey(UITransitionContextFromViewKey) {
             let centre = presentedView.center
             
-            UIView.animateWithDuration(self.transitionDuration(transitionContext),
-                delay: 0.0,
-                options: UIViewAnimationOptions.CurveLinear,
-                animations: {
-                    presentedView.center = CGPointMake(presentedView.bounds.size.width*1.5, centre.y)
-                }, completion: {
-                    finished in
-                        println("EditorDismissalAnimator - transaction finished = \(finished)")
-                        if(transitionContext.transitionWasCancelled()) {
-                            transitionContext.completeTransition(false)
-                        } else {
-                            transitionContext.completeTransition(true)
-                        }
-            })
+            if transitionContext.isInteractive() {
+                UIView.animateWithDuration(self.transitionDuration(transitionContext),
+                    delay: 0.0,
+                    options: UIViewAnimationOptions.CurveLinear,
+                    animations: {
+                        presentedView.center = CGPointMake(presentedView.bounds.size.width*1.5, centre.y)
+                    }, completion: {
+                        finished in
+                            println("EditorDismissalAnimator - transaction finished = \(finished)")
+                            if(transitionContext.transitionWasCancelled()) {
+                                transitionContext.completeTransition(false)
+                            } else {
+                                transitionContext.completeTransition(true)
+                            }
+                })
+            
+            } else {
+                // non-interactive - gradual stop
+                UIView.animateWithDuration(self.transitionDuration(transitionContext),
+                    delay: 0.0,
+                    usingSpringWithDamping: 1.0,
+                    initialSpringVelocity: 1,
+                    options: nil,
+                    animations: {
+                        presentedView.center = CGPointMake(presentedView.bounds.size.width*1.5, centre.y)
+                    },
+                    completion: {
+                        finished in
+                        transitionContext.completeTransition(true)
+                })
+            }
         }
     }
     

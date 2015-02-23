@@ -17,6 +17,8 @@ class EditorDismissalAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
         
+        println("interactive = \(transitionContext.isInteractive())")
+        
         if let presentedView = transitionContext.viewForKey(UITransitionContextFromViewKey) {
             let centre = presentedView.center
             

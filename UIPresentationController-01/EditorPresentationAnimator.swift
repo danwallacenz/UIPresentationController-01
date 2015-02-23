@@ -16,6 +16,8 @@ class EditorPresentationAnimator: NSObject, UIViewControllerAnimatedTransitionin
     
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
         
+        println("interactive = \(transitionContext.isInteractive())")
+        
         if let presentedView = transitionContext.viewForKey(UITransitionContextToViewKey) {
             let centre = presentedView.center
             presentedView.center = CGPointMake(presentedView.bounds.size.width * 1.5, centre.y)

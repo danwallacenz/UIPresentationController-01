@@ -10,12 +10,13 @@ import UIKit
 
 class EditorPresentationController: UIPresentationController {
    
+    let dimmingView = UIView()
     
     override init(presentedViewController: UIViewController!, presentingViewController: UIViewController!) {
         
         super.init(presentedViewController: presentedViewController, presentingViewController: presentingViewController)
         
-//        dimmingView.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
+        dimmingView.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
     }
     
      // MARK: The presentation phase
@@ -26,6 +27,17 @@ class EditorPresentationController: UIPresentationController {
         println("EditorPresentationController - presentationTransitionWillBegin() containerView is \(containerView)")
         addBlur()
 //        addVibrancy()
+        
+        
+        // add the dimming view
+        dimmingView.frame = containerView.bounds
+        dimmingView.alpha = 0.0
+        containerView.insertSubview(dimmingView, atIndex: 0)
+        
+        presentedViewController.transitionCoordinator()?.animateAlongsideTransition({
+                context in
+                self.dimmingView.alpha = 1.0
+            }, completion: nil)
     }
     
     override func presentationTransitionDidEnd(completed: Bool) {
@@ -34,15 +46,32 @@ class EditorPresentationController: UIPresentationController {
     }
 
     
+    // MARK: The dismissal phase
+    //... involves moving the new view controller off screen through a series of transition animations.
+    override func dismissalTransitionWillBegin() {
+        super.dismissalTransitionWillBegin()
+        println("\nEditorPresentationController - dismissalTransitionWillBegin")
+        
+        // remove the dimming view
+        presentedViewController.transitionCoordinator()?.animateAlongsideTransition({
+            context in
+            self.dimmingView.alpha = 0.0
+            }, completion: {
+                context in
+                self.dimmingView.removeFromSuperview()
+        })
+    }
+    
+    override func dismissalTransitionDidEnd(completed: Bool) {
+        super.dismissalTransitionDidEnd(completed)
+        println("EditorPresentationController - dismissalTransitionDidEnd(\(completed))")
+        
+
+    }
+    
+    
     // MARK: UIVisualEffects
     private func addBlur() {
-        
-//        if let editorVC = presentedViewController as? EditorViewController {
-//            if let contentView = editorVC.contentView {
-//                println("temp!!!!!!")
-//                contentView.backgroundColor = UIColor.redColor().colorWithAlphaComponent(0.4)
-//            }
-//        }
         
         let blurEffect = UIBlurEffect(style: .ExtraLight)
         
@@ -70,8 +99,6 @@ class EditorPresentationController: UIPresentationController {
     private func addVibrancy() {
         if let editorVC = presentedViewController as? EditorViewController {
             if let contentView = editorVC.contentView {
-                println("contentView:\(contentView)")
-//                contentView.backgroundColor = UIColor.redColor().colorWithAlphaComponent(0.4)
                 
                 let blurEffect = UIBlurEffect(style: .ExtraLight)
                 let blurEffectView = UIVisualEffectView(effect: blurEffect)
@@ -80,7 +107,6 @@ class EditorPresentationController: UIPresentationController {
                 
                 
                 // remove layout constraints for content view
-//                editorVC.contentViewContraints = nil
                 self.presentedView().removeConstraints(editorVC.contentViewContraints)
 
                 vibrancyEffectView.contentView.addSubview(contentView)
@@ -115,17 +141,7 @@ class EditorPresentationController: UIPresentationController {
     }
     
     
-     // MARK: The dismissal phase
-     //... involves moving the new view controller off screen through a series of transition animations.
-    override func dismissalTransitionWillBegin() {
-        super.dismissalTransitionWillBegin()
-        println("\nEditorPresentationController - dismissalTransitionWillBegin")
-    }
-    
-    override func dismissalTransitionDidEnd(completed: Bool) {
-        super.dismissalTransitionDidEnd(completed)
-        println("EditorPresentationController - dismissalTransitionDidEnd(\(completed))")
-    }
+
     
     // MARK: The management phase
     // ... involves responding to environment changes (such as device rotations) while the new view controller is onscreen.
